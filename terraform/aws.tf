@@ -8,7 +8,7 @@ provider "aws" {
 
 resource "aws_vpc" "multi_cloud_vpc" {
   cidr_block = "10.2.0.0/16"
-  
+
   tags = {
     Name = "minimal-aws-vpc"
   }
