@@ -18,18 +18,14 @@ graph TD
 
     subgraph Azure [Azure Landing Zone]
         MG[Platform Management Group]
-        Pol[Azure Policies: Allowed Regions, Deny Public IPs]
-        MG --> Pol
-
-        subgraph VNet [Hub-and-Spoke Network]
-            Hub[Hub VNet]
-            Spoke[Spoke VNet]
-            Hub --- Spoke
-        end
-
+        Pol[Azure Policies]
+        Hub[Hub VNet]
+        Spoke[Spoke VNet]
         VM[Linux VM]
         AKS[AKS Cluster]
 
+        MG --> Pol
+        Hub <--> Spoke
         Hub --> VM
         Spoke --> AKS
     end
@@ -46,9 +42,9 @@ graph TD
         Argo --> MS2
     end
 
-    D -. Validates & Plans .-> A
-    D -. Lints .-> B
-    A --> Azure
-    A --> AWS
+    D -->|Validates and Plans| A
+    D -->|Lints| B
+    A --> MG
+    A --> VPC
     B --> VM
-    C <-- Pulls Manifests --- Argo
+    Argo -->|Pulls Manifests| C
