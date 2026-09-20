@@ -12,4 +12,3 @@
   ansible.builtin.apt:
     name: docker.io
     state: present
-    
