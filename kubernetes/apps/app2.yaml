@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-two
+  labels:
+    app: ms-two
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ms-two
+  template:
+    metadata:
+      labels:
+        app: ms-two
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:alpine
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-two-svc
+spec:
+  selector:
+    app: ms-two
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP

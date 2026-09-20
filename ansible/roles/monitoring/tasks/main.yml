@@ -1,0 +1,5 @@
+---
+- name: Install node_exporter for monitoring
+  apt:
+    name: prometheus-node-exporter
+    state: present

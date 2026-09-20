@@ -1,0 +1,14 @@
+---
+- name: Install prerequisites
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+    state: present
+    update_cache: yes
+
+- name: Install Docker CE
+  apt:
+    name: docker.io
+    state: present
