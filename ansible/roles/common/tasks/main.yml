@@ -5,3 +5,4 @@
     regexp: '^PermitRootLogin'
     line: 'PermitRootLogin no'
     state: present
+    
