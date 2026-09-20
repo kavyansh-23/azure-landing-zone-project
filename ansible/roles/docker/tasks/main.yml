@@ -1,14 +1,14 @@
 ---
 - name: Install prerequisites
-  apt:
+  ansible.builtin.apt:
     name:
       - apt-transport-https
       - ca-certificates
       - curl
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Install Docker CE
-  apt:
+  ansible.builtin.apt:
     name: docker.io
     state: present

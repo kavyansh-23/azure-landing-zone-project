@@ -1,7 +1,7 @@
 ---
 - name: Configure Hub Network Linux VM
   hosts: hub_vms
-  become: yes
+  become: true
   roles:
     - common
     - docker
